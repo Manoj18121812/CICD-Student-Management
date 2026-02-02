@@ -25,33 +25,9 @@ jobs:
     - name: Copy project to EC2
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: ${{ 54.91.10.36 }}
+        host: ${{ secrets.EC2_HOST }}
         username: ubuntu
-        key: ${{ MIIEpAIBAAKCAQEA4ooWljT4m5MJnEXHSQtU/oTTqzrdHg7QA8Lie7NaiS5T8j0o
-WQ8tMV1gLfml8f4cArl80BVAYGerOiHg91J38C0lJjQ0MiSqj9ecOyS7MPKXtqUc
-lmrQS9kDjvuWubVxGN/VbmqcBhRAusLTX+o+mXPWbAen9c7jr1hYo7oNHdzLtXj5
-IPBqmZ9lHTG+OsOAcnoPrYyiF52yOUsthXEKGGW8ZMZTfSPZ31ITvRQmTvLwzR4t
-fMTexkvE/kiRNjnHPVvWF/AFycv9CnKA1pXUEDZINRNONHAr+G+Q7VoNJALuY9sp
-pItGYr6ECFJLWH61NG3WTXZqz56EueIeo47V2wIDAQABAoIBAFPuZ2nlXEp/kqr0
-a15TtXzLB4VEPNI7GLScCr9b9uomYPG52O4OImdMuiqueN4MkKItyOFrTjupjRXv
-oWLgihFRGJdr9f6x+QNsFbUP6c67wpvn1oygLGY9lATwj6pkX++gVnofQ4k5DbZk
-Il5B8kl2UnYZ7A+1REQdzlFyyBNMnTBocoFxiF/32Na1ZHOZm0MoF4DbyNllQpVs
-OSx1EF9FqeQwQH9x+AccCaFbnfW7N1F0sNNiw90T+SbKzCRbgL2zKPvT5Dd7ouht
-r+QQ1kzV5kMGokJVRqplOt26lAE+kdrm7fg5l7u3X1Xd3VSP9CQFua1cRLkFJp8L
-vamHoIkCgYEA9Luexboe65RSciKhMxM7pEsXf+nwWmuzqd3SpxyS1E9bqcW+pLfg
-gm1VlvS39faxQvt8FT7ILxDZV60SnIS/e7OCbDrAkQbH2UN844m/DC8Dr5bzZb/W
-D0PkjTi6cmV9mjWTvnQLBJlC2pdkfHdQZRkYalDhBz6o5mYI6nHNx0cCgYEA7PgK
-8WmqI+agxRFV5oWmQe4ZlcDQQCb+n7ACJmVYFL1DHtI/Wq5WUHxkScfqKRkPAfp0
-2cs3xJi36jxeCrdoIMiX0SKPpDZ/ZX4OrB2xS7cw+2Xd+m6Y5lDz7WWDUd8Pyrv+
-IlWLQQZQ+3xojN0umch3IbVwPokQXB/jO8sMrs0CgYEA6JL4ov1qbwSIiVDhkpE/
-h7WZAoWGVdeuaMqWaxtbagp0mNWEhDL+V9ShlxC/Vi73bClkVShRw3Cmq4ydeEMr
-WdpRIpt+7xPbjlx1biM0fNadERxJ+LMjMWSa6Z40iYxrncY2vrK22crwXp2q8CHP
-NBRyQG7WOzVP+4ySAoLeRPcCgYAni8l/ukuLjDx+RsNYIiu5yvt4E2JtolRR3/Sr
-5bPKWj9uUFYEUx3Sdr/h1DwOucDYaqy/f/uBkp72tzZWgX8eIXu8ihEArZubG2tl
-a9sfsKW6/qgJ2BUqMo5SquM8cYZYJgFmR3Ji2qP/JCbqgyr4vQysknP167fQN/4b
-B2rJbQKBgQCutHbqR/CX2C6qGeghOP7pVXQBkvOXjuy96eLfMt1eSUcKa+oW/Y6k
-wfGj3SPpcO7ygfjAYB2D0Ot5rKwvYJ1qbsOSd2oTHXDXIdNb0OK1/sN//Q3wCvIW
-644hPizXavQEwZug1dUnAuzXy6t39Pa9HveI7GLtZbzYVLTmw+rUXQ== }}
+        key: ${{ secrets.EC2_KEY }}
         source: "Student"
         target: "/home/ubuntu/app"
 
@@ -63,10 +39,6 @@ wfGj3SPpcO7ygfjAYB2D0Ot5rKwvYJ1qbsOSd2oTHXDXIdNb0OK1/sN//Q3wCvIW
         key: ${{ secrets.EC2_KEY }}
         script: |
           cd /home/ubuntu/app/Student
-
           docker build -t student-app .
-
           docker rm -f student || true
-
           docker run -d -p 8081:8080 --name student student-app
-
