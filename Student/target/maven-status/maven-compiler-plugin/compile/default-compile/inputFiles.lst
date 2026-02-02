@@ -1,0 +1,5 @@
+/home/ubuntu/CICD-Student-Management/Student/src/main/java/com/example/Student/Controller/StudentController.java
+/home/ubuntu/CICD-Student-Management/Student/src/main/java/com/example/Student/Entity/Student.java
+/home/ubuntu/CICD-Student-Management/Student/src/main/java/com/example/Student/Repository/StudentRepository.java
+/home/ubuntu/CICD-Student-Management/Student/src/main/java/com/example/Student/Service/StudentService.java
+/home/ubuntu/CICD-Student-Management/Student/src/main/java/com/example/Student/StudentApplication.java
